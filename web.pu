@@ -1,0 +1,51 @@
+@startuml HTTP
+"クライアント(ブラウザ)" -> WebAPサーバ: HTTP リクエスト
+WebAPサーバ -> "クライアント(ブラウザ)": HTTP レスポンス
+@enduml
+
+@startuml MPA
+title MPA
+ユーザ -> ブラウザ: URLを入力
+ブラウザ -> サーバ: HTTP GET リクエスト
+サーバ -> サーバ: 画面表示に必要な情報を生成
+サーバ -> サーバ: テンプレートエンジン(JSP/Thymleaf等)でHTMLを生成
+サーバ -> ブラウザ: HTTP レスポンス (content-type="text/html")
+ブラウザ -> ブラウザ: レスポンスボディのhtmlから画面を構築
+ブラウザ -> ユーザ: 画面表示
+@enduml
+@startuml MPA2
+title MPA(初期表示以降)
+ユーザ -> ブラウザ: 情報入力
+ユーザ -> ブラウザ: 登録、更新などを伴う操作
+ブラウザ -> サーバ: HTTP リクエスト
+サーバ -> サーバ: 画面表示に必要な情報を生成
+サーバ -> サーバ: テンプレートエンジン(JSP/Thymleaf等)でHTMLを生成
+サーバ -> ブラウザ: HTTP レスポンス (content-type="text/html")
+ブラウザ -> ブラウザ: レスポンスボディのhtmlから画面を構築
+ブラウザ -> ユーザ: 画面表示
+@enduml
+
+@startuml SPA
+title SPA
+ユーザ -> ブラウザ: URLを入力
+ブラウザ -> サーバ: HTTP GET リクエスト
+サーバ -> ブラウザ: HTTP レスポンス(content-type="text/html")
+ブラウザ -> ブラウザ: レスポンスボディのhtmlから画面を構築
+ブラウザ -> ユーザ: 画面表示
+ブラウザ -> サーバ: HTTP リクエスト(ajax)
+サーバ -> サーバ: 初期画面に必要な情報を生成
+サーバ -> ブラウザ: HTTP レスポンス (content-type="application/json")
+ブラウザ -> ブラウザ: レスポンスボディのjsonから画面を初期化
+ブラウザ -> ユーザ: 画面表示
+@enduml
+@startuml SPA2
+title SPA(初期表示以降)
+ユーザ -> ブラウザ: 情報入力
+ユーザ -> ブラウザ: 登録、更新などを伴う操作
+ブラウザ -> サーバ: HTTP リクエスト(ajax)
+サーバ -> サーバ: 画面表示に必要な情報を生成
+サーバ -> ブラウザ: HTTP レスポンス (content-type="application/json")
+ブラウザ -> ブラウザ: レスポンスボディのjsonから画面を更新
+ブラウザ -> ユーザ: 画面更新
+@enduml
+
