@@ -163,7 +163,6 @@ Connection: close
     <body>Hello World</body>
 </html>
 ```
-- ↑のようなテキストデータがサーバから返却される
 - 1行目：ステータスライン。プロトコルバージョン、ステータスコード、メッセージが入る
 2行目以降から空行まで：レスポンスヘッダ
 空行以降: レスポンスボディ
@@ -196,3 +195,17 @@ Connection: close
 
 https://developer.mozilla.org/ja/docs/Web/HTTP/Status
 
+---
+
+# 知っておきたいリクエストヘッダー
+
+- Cookie
+- Content-Type
+
+---
+
+# Cookie
+
+## Cookieとは
+
+> RFC 6265などで定義されたHTTPにおけるウェブサーバとウェブブラウザ間で状態を管理する通信プロトコル、またそこで用いられるウェブブラウザに保存された情報のことを指す。
