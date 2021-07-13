@@ -1,0 +1,53 @@
+@startmindmap 仮想DOM
+title 仮想DOM
+* Root
+** vnode(ui)
+*** vnode(li)
+*** vnode(li)
+*** vnode(li)
+** vnode(input)
+** vnode(button)
+@endmindmap
+
+@startmindmap 仮想DOM2
+title 仮想DOM(前回レンダリング分)
+* Root
+** vnode(ui)
+*** vnode(li)
+*** vnode(li)
+** vnode(input)
+** vnode(button)
+@endmindmap
+
+@startmindmap 仮想DOM3
+title 仮想DOM(差分)
+* Root
+** vnode(ui)
+*** vnode(li)
+*** vnode(li)
+***[#Orange] vnode(li)
+** vnode(input)
+** vnode(button)
+@endmindmap
+
+
+
+@startuml traditional-page-transition
+title 今までのページ遷移
+ユーザ -> ブラウザ: ページ遷移を伴うアクション
+ブラウザ -> サーバ: HTTP GET リクエスト
+サーバ -> サーバ: テンプレートエンジン(JSP/Thymleaf等)でHTMLを生成
+サーバ -> ブラウザ: HTML
+ブラウザ -> ブラウザ: レスポンスボディのhtmlを元に画面を1から再構築
+サーバ <-> ブラウザ: 必要に応じてjs, cssを取得
+ブラウザ -> ユーザ: 画面を表示
+@enduml
+
+@startuml spa-page-transition
+title SPAのページ遷移
+ユーザ -> ブラウザ: ページ遷移を伴うアクション
+サーバ <-> ブラウザ: 対象ページのコンポーネント(javascript)を取得
+ブラウザ -> ブラウザ: ページ部分を受け取ったコンポーネントで描画
+ブラウザ -> ユーザ: 画面を表示
+@enduml
+
